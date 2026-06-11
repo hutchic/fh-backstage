@@ -1,23 +1,6 @@
 ---
 version: 2
 updates:
-- package-ecosystem: pip
-  directory: /
-  schedule:
-    interval: weekly
-  groups:
-    patch:
-      applies-to: version-updates
-      patterns:
-        - "*"
-      update-types:
-        - "patch"
-
-- package-ecosystem: docker
-  directory: /
-  schedule:
-    interval: weekly
-
 - package-ecosystem: github-actions
   directory: /
   schedule:
@@ -26,21 +9,11 @@ updates:
     patch:
       applies-to: version-updates
       patterns:
-        - "*"
+      - "*"
       update-types:
-        - "patch"
+      - "patch"
 
-- package-ecosystem: npm
-  directory: /frontend/
-  ignore:
-  - dependency-name: '*'
-    update-types: [version-update:semver-major]
+- package-ecosystem: docker
+  directory: /
   schedule:
-    interval: daily
-  groups:
-    patch:
-      applies-to: version-updates
-      patterns:
-        - "*"
-      update-types:
-        - "patch"
+    interval: weekly

@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fh-backstage
+  description: Function Health internal developer portal.
+  annotations:
+    github.com/project-slug: Function-Health/fh-backstage
+spec:
+  type: website
+  owner: group:default/platform
+  lifecycle: experimental
