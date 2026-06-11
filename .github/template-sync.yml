@@ -1,0 +1,11 @@
+---
+additional:
+- docker-k8s
+
+files:
+- '!README.md'
+- '!**/sync.yml'
+- '!Dockerfile'
+- '!.secrets.baseline'
+- '!**/template-sync.yml'
+- '!.github/workflows/sync.yml'
