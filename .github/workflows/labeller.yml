@@ -11,7 +11,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-    - uses: actions/labeler@v5
+    - uses: actions/labeler@v6
       continue-on-error: true
       with:
         repo-token: ${{ secrets.AUTO_MERGE_TOKEN || secrets.GITHUB_TOKEN }}
