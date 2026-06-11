@@ -29,6 +29,7 @@ jobs:
     - name: Build Only
       uses: docker/bake-action@v6
       with:
+        source: .
         files: |
           ./docker-bake.hcl
         targets: image
@@ -59,6 +60,7 @@ jobs:
       if: github.event_name == 'push' && steps.release.outputs.published == 'true'
       uses: docker/bake-action@v6
       with:
+        source: .
         push: 'true'
         files: |
           ./docker-bake.hcl
