@@ -7,12 +7,15 @@ jobs:
   label:
     name: auto label
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
     - uses: actions/labeler@v5
       continue-on-error: true
       with:
-        repo-token: ${{ secrets.AUTO_MERGE_TOKEN }}
+        repo-token: ${{ secrets.AUTO_MERGE_TOKEN || secrets.GITHUB_TOKEN }}
     - uses: TimonVS/pr-labeler-action@v5.0.0
       continue-on-error: true
       env:
-        GITHUB_TOKEN: ${{ secrets.AUTO_MERGE_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.AUTO_MERGE_TOKEN || secrets.GITHUB_TOKEN }}

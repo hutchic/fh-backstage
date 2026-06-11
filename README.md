@@ -62,6 +62,6 @@ Set `GITHUB_TOKEN` for catalog/scaffolder GitHub integration. Create a GitHub OA
 
 | Secret | Purpose |
 | --- | --- |
-| `AUTO_MERGE_TOKEN` | Dependabot automerge and PR labeler |
+| `AUTO_MERGE_TOKEN` | Optional PAT for dependabot automerge; autoupdate and labeler fall back to `GITHUB_TOKEN` |
 
 `GITHUB_TOKEN` is provided automatically by GitHub Actions (also used for GHCR publish).
