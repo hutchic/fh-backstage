@@ -2,7 +2,7 @@
 # https://backstage.io/docs/deployment/docker#multi-stage-build
 
 # Stage 1 - Create yarn install skeleton layer
-FROM node:24-trixie-slim AS packages
+FROM node:26-trixie-slim AS packages
 WORKDIR /app
 COPY backstage.json package.json yarn.lock ./
 COPY .yarn ./.yarn
@@ -11,7 +11,7 @@ COPY packages packages
 RUN find packages \! -name "package.json" -mindepth 2 -maxdepth 2 -exec rm -rf {} \+
 
 # Stage 2 - Install dependencies and build packages
-FROM node:24-trixie-slim AS build
+FROM node:26-trixie-slim AS build
 ENV PYTHON=/usr/bin/python3
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
@@ -31,7 +31,7 @@ RUN mkdir packages/backend/dist/skeleton packages/backend/dist/bundle \
     && tar xzf packages/backend/dist/bundle.tar.gz -C packages/backend/dist/bundle
 
 # Stage 3 - Runtime image
-FROM node:24-trixie-slim
+FROM node:26-trixie-slim
 ENV PYTHON=/usr/bin/python3
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
